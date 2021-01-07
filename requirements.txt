@@ -315,3 +315,4 @@ widgetsnbextension==3.5.1
 wikipedia==1.4.0
 wrapt==1.12.1
 yapf==0.30.0
+uwsgi
