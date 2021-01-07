@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}"> {% block head %}{% endblock %}
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap');
+        * {
+            margin: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+            font-family: 'Nanum Gothic', sans-serif;
+            text-decoration: none;
+        }
+        
+        body {
+            width: 100vw;
+            background-color: rgb(153, 179, 155);
+        }
+        
+        .main {
+            left: 50%;
+            transform: translate(-50%);
+            color: #fff;
+        }
+        
+        .title {
+            margin: 4rem;
+        }
+        
+        .container {
+            margin: 5rem;
+        }
+        
+        input {
+            border: 0;
+            padding: 10px 30px;
+            margin: 2rem;
+            border-radius: 5px;
+        }
+        
+        .input-file-container {
+            position: relative;
+            width: 225px;
+        }
+        
+        .input-file-trigger {
+            display: block;
+            padding: 14px 45px;
+            background: #39D2B4;
+            color: #fff;
+            font-size: 1em;
+            transition: all .4s;
+            cursor: pointer;
+        }
+        
+        .input-file {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 225px;
+            opacity: 0;
+            padding: 14px 0;
+            cursor: pointer;
+        }
+        
+        .input-file:hover+.input-file-trigger,
+        .input-file:focus+.input-file-trigger,
+        .input-file-trigger:hover,
+        .input-file-trigger:focus {
+            background: #34495E;
+            color: #39D2B4;
+        }
+        
+        .file-return {
+            margin: 0;
+        }
+        
+        .file-return:not(:empty) {
+            margin: 1em 0;
+        }
+        
+        .file-return {
+            font-style: italic;
+            font-size: .9em;
+            font-weight: bold;
+        }
+        
+        .file-return:not(:empty):before {
+            content: "Selected file: ";
+            font-style: normal;
+            font-weight: normal;
+        }
+        
+        a {
+            color: #fff;
+        }
+        
+        .img {
+            margin: 3rem;
+        }
+    </style>
+
+</head>
+
+<body>
+    {% block body %}{% endblock %}
+    <script type="text/javascript">
+        var fileObj = document.getElementById("my-file");
+        fileObj.onchange = function(event) {
+            var file = fileObj.files[0],
+                reader = new FileReader();
+            reader.onload = function(e) {
+                var img = new Image();
+                img.src = e.target.result;
+                console.log(img)
+                document.querySelector(".img").appendChild(img);
+            }
+            reader.readAsDataURL(file)
+        }
+    </script>
+</body>
+
+
+</html>

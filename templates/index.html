@@ -1,0 +1,25 @@
+{% extends 'base.html' %} {% block head %}
+<title>AI 이미지로 링크이동</title>
+{% endblock %} {% block body %}
+<div class="main">
+    <div class="title">
+        <h1>AI 이미지로 링크이동</h1>
+    </div>
+    <div class="container">
+        <form method="POST" action="" enctype="multipart/form-data">
+            <div class="input-file-container">
+                <input class="input-file" id="my-file" ype="file" type="file" name="image_file" accept="image/*" onchange="changeValue(this)">
+                <label tabindex="0" for="my-file" class="input-file-trigger">Select a img...</label>
+            </div>
+            <div class="img">
+
+            </div>
+            <input type="submit" value="Submit">
+        </form>
+        {% if error %}
+        <p>{{error}}</p>
+        {% endif %} {% if link %}
+        <a href="{{ link }}">해당 사이트로 이동 <br>{{link}}</a> {% endif %}
+    </div>
+</div>
+{% endblock %}
